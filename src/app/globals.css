@@ -1,26 +1,137 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap'); */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* @plugin "@tailwindcss/typography"; */
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: 220 20% 97%;
+  --foreground: 220 18% 18%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 220 18% 18%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 18% 18%;
+
+  --primary: 214 98% 62%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 220 15% 94%;
+  --secondary-foreground: 220 20% 25%;
+
+  --muted: 220 15% 95%;
+  --muted-foreground: 220 10% 45%;
+
+  --accent: 45 95% 65%; /* warm yellow */
+  --accent-foreground: 220 20% 15%;
+
+  --border: 220 12% 87%;
+  --input: 220 12% 87%;
+  --ring: 214 55% 50%;
+
+  --destructive: 0 72% 55%;
+}
+
+.dark {
+  --background: 220 10% 12%;
+  --foreground: 220 8% 84%;
+  --card: 220 10% 15%;
+  --card-foreground: 220 15% 92%;
+
+  --popover: 220 15% 13%;
+  --popover-foreground: 220 15% 92%;
+
+  --primary: 210 65% 65%;
+  --primary-foreground: 220 20% 10%;
+
+  --secondary: 220 15% 18%;
+  --secondary-foreground: 220 15% 85%;
+
+  --muted: 220 15% 18%;
+  --muted-foreground: 220 10% 60%;
+
+  --accent: 45 80% 60%;
+  --accent-foreground: 220 20% 10%;
+
+  --border: 220 12% 24%;
+  --input: 220 12% 24%;
+  --ring: 210 65% 65%;
+}
+
+* {
+  border-color: hsl(var(--border));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 450;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.company-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose,
+.prose p,
+.prose li,
+.prose blockquote {
+  font-family: var(--font-serif);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+input,
+select,
+button,
+label {
+  font-family: var(--font-sans);
 }
