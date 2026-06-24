@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id String @id @default(cuid())
+
+  name String
+  website String? @unique
+  
+  logoUrl String?
+
+  description String?
+  oneLiner String?
+
+  location String?
+  country String?
+
+  industry String?
+
+  ycBatch String?
+
+  teamSize Int?
+
+  isHiring Boolean @default(false)
+
+  intentScore Float?
+  intentReason String?
+
+  jobs Job[]
+  signals Signal[]
+  sources CompanySource[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Job {
+  id String @id @default(cuid())
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id])
+
+  title String
+
+  role String?
+
+  description String?
+
+  salaryMin Int?
+  salaryMax Int?
+
+  remote Boolean @default(false)
+
+  source SourceType
+
+  createdAt DateTime @default(now())
+}
+
+model Signal {
+  id String @id @default(cuid())
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id])
+
+  source SourceType
+
+  type SignalType
+
+  value String?
+  evidence String?
+
+  confidence Float?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+}
+
+model CompanySource {
+  id String @id @default(cuid())
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id])
+
+  source SourceType
+
+  externalId String?
+
+  rawData Json
+
+  createdAt DateTime @default(now())
+}
+
+enum SourceType {
+  YC
+}
+
+enum SignalType {
+  SALES_HIRING
+  FUNDING
+  GROWTH
+  EXPANSION
+}
