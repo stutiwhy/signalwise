@@ -1,5 +1,5 @@
 // src\modules\yc\importer.ts
-import { prisma } from "../../../../lead-gen-bot/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 export async function importJobHit(hit: any) {
   const company = await prisma.company.upsert({

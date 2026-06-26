@@ -1,5 +1,5 @@
 // src/modules/scoring/score-companies.ts
-import { prisma } from "../../../../lead-gen-bot/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 const SALES_KEYWORDS = [
   "sales",
