@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# leadscore
 
-## Getting Started
+An AI-powered lead intelligence platform that discovers and prioritizes companies likely to need outbound sales or appointment-setting services. It ingests public hiring data from Y Combinator Work at a Startup, enriches company profiles, scores buying intent using rule-based signals, and uses Gemini to generate qualitative analyses, outreach angles, buyer personas, and potential risks.
 
-First, run the development server:
+## stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+next.js, typescript, prisma, postgresql (neon), tailwind css, gemini api
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+frontend: https://signalwise.netlify.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+backend/database:
+- neon postgresql
+- gemini api
 
-## Learn More
+## features
 
-To learn more about Next.js, take a look at the following resources:
+- automated ingestion of public company and hiring data
+- rule-based outbound intent scoring
+- searchable and filterable lead dashboard
+- detailed company profiles
+- on-demand AI analysis using Gemini
+- automated database refresh pipeline
+- responsive UI built with Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## scoring logic
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Companies are scored based on a combination of growth and outbound-buying signals, including:
 
-## Deploy on Vercel
+- sales and business development hiring
+- leadership hiring (Head of Growth, VP Sales, etc.)
+- hiring activity
+- team size
+- industry
+- growth-related language
+- AI/automation positioning
+- remote sales hiring
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The generated score is then supplemented with an AI-generated qualitative assessment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## project structure
+
+### data pipeline
+
+- **sync**: imports public hiring data from Y Combinator Work at a Startup.
+- **importer**: normalizes company and job data into PostgreSQL using Prisma.
+- **scoring**: evaluates companies using rule-based intent scoring.
+- **refresh**: clears and repopulates the database with fresh data.
+
+### frontend
+
+- **dashboard**: searchable list of companies with intent scores.
+- **company page**: detailed company information, hiring signals, and AI analysis.
+- **api**: server routes for company analysis and database refresh.
+- **components**: reusable UI components including tables, badges, filters, and markdown rendering.
+
+### database
+
+- **Company**
+- **Job**
+- **Signal**
+- **CompanySource**
+
+Designed to support future enrichment from additional public data sources.
+
+## ai analysis
+
+Gemini is used on demand to generate:
+
+- intent level
+- buying rationale
+- strongest evidence
+- outreach angles
+- recommended service
+- ideal buyer personas
+- potential risks
+- paani ki tangi
+
+AI analysis complements the rule-based score rather than replacing it.
+
+## o/p demo ss
+
+<img src="op-1.png">
+<img src="op-2.png">
+<img src="op-3.png">
+<img src="op-4.png">
