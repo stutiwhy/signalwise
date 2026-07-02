@@ -1,4 +1,4 @@
-# leadscore
+# signalwise
 
 An AI-powered lead intelligence platform that discovers and prioritizes companies likely to need outbound sales or appointment-setting services. It ingests public hiring data from Y Combinator Work at a Startup, enriches company profiles, scores buying intent using rule-based signals, and uses Gemini to generate qualitative analyses, outreach angles, buyer personas, and potential risks.
 
