@@ -33,7 +33,7 @@ export function RefreshButton() {
   return (
     <div className="space-y-2">
       <button
-        disabled={loading}
+        disabled={true}
         onClick={refresh}
         className="inline-flex items-center gap-2 rounded-xl border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
       >
